@@ -156,12 +156,50 @@ pas aux certificats ni configs de vos autres domaines.
 - Testez une réservation + connexion admin (`/admin`) pour confirmer que
   MySQL fonctionne bien en production.
 
-## Mises à jour futures
+## 9. CI/CD - déploiement automatique à chaque push
 
-```bash
-cd /var/www/barber-shop
-git pull
-npm install
-npm run build
-pm2 restart barbershop
-```
+Un workflow GitHub Actions (`.github/workflows/deploy.yml`) est déjà
+présent dans le dépôt : à chaque `git push` sur `main`, il se connecte en
+SSH à votre VPS et relance automatiquement les commandes de mise à jour
+(`git pull`, `npm install`, `npm run build`, `pm2 restart barbershop`).
+
+**Mise en place (une seule fois) :**
+
+1. Générez une paire de clés SSH **dédiée au déploiement** (à ne pas
+   confondre avec votre clé SSH personnelle), depuis votre PC :
+
+   ```bash
+   ssh-keygen -t ed25519 -f deploy_key -N ""
+   ```
+
+   Cela crée `deploy_key` (clé privée) et `deploy_key.pub` (clé publique).
+
+2. Ajoutez la clé **publique** sur le VPS, pour l'utilisateur qui doit
+   exécuter le déploiement (ex. `deploy` ou votre utilisateur habituel) :
+
+   ```bash
+   cat deploy_key.pub | ssh VOTRE_USER@VOTRE_IP_VPS "cat >> ~/.ssh/authorized_keys"
+   ```
+
+3. Sur GitHub, dans le dépôt → **Settings → Secrets and variables →
+   Actions → New repository secret**, créez ces 4 secrets :
+
+   | Nom            | Valeur                                              |
+   |----------------|------------------------------------------------------|
+   | `VPS_HOST`     | l'adresse IP (ou domaine) de votre VPS               |
+   | `VPS_USER`     | l'utilisateur SSH utilisé à l'étape 2                |
+   | `VPS_SSH_KEY`  | le contenu **complet** du fichier `deploy_key` (clé privée, `cat deploy_key`) |
+   | `VPS_PORT`     | le port SSH (`22` par défaut, sauf si vous l'avez changé) |
+   | `VPS_PATH`     | le chemin du projet sur le VPS (ex. `/var/www/barber-shop`) |
+
+   Ce secret `VPS_PATH` doit aussi être ajouté dans la liste ci-dessus
+   comme secret (pas juste une variable), puisqu'il est utilisé dans le
+   `script:` du workflow.
+
+4. Supprimez ensuite `deploy_key` et `deploy_key.pub` de votre PC une
+   fois copiés dans GitHub (ils ne servent qu'à la configuration).
+
+Une fois ces secrets renseignés, tout `git push origin main` déclenche
+automatiquement le déploiement - visible dans l'onglet **Actions** du
+dépôt GitHub. Les mises à jour manuelles (`git pull` + `npm run build` +
+`pm2 restart` sur le VPS) restent possibles en dépannage si besoin.
