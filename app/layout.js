@@ -41,6 +41,12 @@ export default function RootLayout({ children }) {
     <html lang="fr" className={`${playfair.variable} ${poppins.variable}`}>
       <body>
         <a href="#main" className="skip-link">Aller au contenu</a>
+        <aside className="sale-sticker" aria-label="Site internet à vendre">
+          <a href="mailto:aah89063@gmail.com?subject=Achat%20du%20site%20Barber%20Shop">
+            <strong>Site à vendre</strong>
+            <span>Me contacter: aah89063@gmail.com</span>
+          </a>
+        </aside>
         <Header />
         {children}
         <Footer />

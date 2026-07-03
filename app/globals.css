@@ -360,6 +360,65 @@ h3 { font-size: clamp(1.2rem, 1.2vw + 1rem, 1.6rem); }
 .skip-link { position: absolute; left: -999px; top: 0; background: var(--gold); color: var(--black); padding: 10px 16px; z-index: 999; }
 .skip-link:focus { left: 10px; top: 10px; }
 
+.sale-sticker {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 70;
+  pointer-events: none;
+}
+
+.sale-sticker a {
+  pointer-events: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 225px;
+  padding: 0.75rem 0.95rem;
+  border-radius: 14px;
+  border: 1px solid rgba(201, 162, 75, 0.45);
+  background:
+    radial-gradient(150px 90px at 20% 20%, rgba(233, 205, 131, 0.24), transparent 72%),
+    linear-gradient(145deg, rgba(28, 28, 32, 0.96), rgba(10, 10, 11, 0.96));
+  box-shadow: 0 18px 40px -18px rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(6px);
+  transition: transform var(--speed) ease, box-shadow var(--speed) ease, border-color var(--speed) ease;
+}
+
+.sale-sticker a:hover {
+  transform: translateY(-3px);
+  border-color: rgba(233, 205, 131, 0.8);
+  box-shadow: 0 22px 45px -16px rgba(201, 162, 75, 0.5);
+}
+
+.sale-sticker strong {
+  font-family: var(--font-head);
+  font-size: 1rem;
+  color: var(--gold-light);
+  line-height: 1.1;
+}
+
+.sale-sticker span {
+  font-size: 0.78rem;
+  color: var(--cream);
+  opacity: 0.92;
+}
+
+@media (max-width: 700px) {
+  .sale-sticker {
+    right: 10px;
+    bottom: 10px;
+  }
+
+  .sale-sticker a {
+    min-width: 180px;
+    padding: 0.62rem 0.78rem;
+  }
+
+  .sale-sticker strong { font-size: 0.92rem; }
+  .sale-sticker span { font-size: 0.72rem; }
+}
+
 @media print {
   .site-header, .nav-toggle, .site-footer, .hero-actions, .cta-banner { display: none !important; }
 }

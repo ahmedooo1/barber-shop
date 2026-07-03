@@ -4,12 +4,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { BARBERS } from "@/lib/barbers";
 
-const SERVICES = [
-  { group: "Coupes Homme", items: ["Coupe classique - 25€", "Coupe + dégradé - 30€", "Coupe + shampoing - 28€", "Coupe enfant - 18€"] },
-  { group: "Barbe & Rasage", items: ["Taille de barbe - 18€", "Rasage traditionnel - 25€"] },
-  { group: "Formules Combo", items: ["Coupe + Barbe - 40€", "Formule Prestige - 55€", "Formule Marié - 65€"] },
-];
-
 const TIMES = ["09:00","09:30","10:00","10:30","11:00","11:30","14:00","14:30","15:00","15:30","16:00","16:30","17:00","17:30","18:00"];
 
 const initial = { name: "", phone: "", email: "", service: "", barber: "", date: "", time: "", message: "", botcheck: "" };
@@ -19,11 +13,33 @@ export default function ReservationForm() {
   const [errors, setErrors] = useState({});
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const [booked, setBooked] = useState([]); // [{ time, barber }] pour la date choisie
+  const [serviceGroups, setServiceGroups] = useState([]); // [{ group, items: [label] }]
   const today = new Date().toISOString().split("T")[0];
 
   function update(field, value) {
     setForm((f) => ({ ...f, [field]: value }));
   }
+
+  // Récupère les prestations (et leurs tarifs) gérées depuis l'admin.
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/services")
+      .then((res) => res.json())
+      .then((data) => {
+        if (cancelled || !data.success) return;
+        const byCategory = new Map();
+        for (const s of data.services) {
+          const label = `${s.name} - ${s.price}`;
+          if (!byCategory.has(s.category)) byCategory.set(s.category, []);
+          byCategory.get(s.category).push(label);
+        }
+        setServiceGroups(Array.from(byCategory, ([group, items]) => ({ group, items })));
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   // Récupère les créneaux déjà pris dès qu'une date est choisie.
   useEffect(() => {
@@ -128,7 +144,7 @@ export default function ReservationForm() {
             <label htmlFor="res-service">Prestation <span className="req">*</span></label>
             <select id="res-service" value={form.service} onChange={(e) => update("service", e.target.value)} required>
               <option value="">Choisir une prestation</option>
-              {SERVICES.map((group) => (
+              {serviceGroups.map((group) => (
                 <optgroup key={group.group} label={group.group}>
                   {group.items.map((item) => <option key={item} value={item}>{item}</option>)}
                 </optgroup>

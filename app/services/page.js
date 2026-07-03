@@ -1,54 +1,28 @@
 import Link from "next/link";
 import { ScissorsIcon, RazorIcon, ComboIcon, DropIcon } from "@/components/Icons";
+import { listServices } from "@/lib/db";
+import { SERVICE_CATEGORIES } from "@/lib/serviceCategories";
 
 export const metadata = {
   title: "Services & Tarifs",
   description: "Découvrez toutes les prestations du Barber Shop : coupes homme, barbe & rasage, formules combo, soins et extras, avec tarifs et durées.",
 };
 
-const CATEGORIES = [
-  {
-    Icon: ScissorsIcon,
-    title: "Coupes Homme",
-    items: [
-      { name: "Coupe classique", desc: "Coupe aux ciseaux et/ou tondeuse, finitions soignées.", price: "25€", duration: "30 min" },
-      { name: "Coupe + dégradé (fade)", desc: "Dégradé progressif, contours précis à la tondeuse.", price: "30€", duration: "40 min" },
-      { name: "Coupe + shampoing", desc: "Coupe complète avec shampoing et coiffage.", price: "28€", duration: "35 min" },
-      { name: "Coupe enfant (-12 ans)", desc: "Coupe adaptée, dans la douceur et la bonne humeur.", price: "18€", duration: "25 min" },
-    ],
-  },
-  {
-    Icon: RazorIcon,
-    title: "Barbe & Rasage",
-    items: [
-      { name: "Taille de barbe", desc: "Mise en forme et équilibrage selon votre visage.", price: "18€", duration: "20 min" },
-      { name: "Rasage traditionnel au coupe-chou", desc: "Serviette chaude, mousse et rasage à l'ancienne.", price: "25€", duration: "30 min" },
-      { name: "Contour à la cire chaude", desc: "Finitions nettes du contour de barbe.", price: "15€", duration: "15 min" },
-      { name: "Taille de moustache", desc: "Précision au ciseau et à la tondeuse fine.", price: "10€", duration: "10 min" },
-    ],
-  },
-  {
-    Icon: ComboIcon,
-    title: "Formules Combo",
-    items: [
-      { name: "Coupe + Barbe", desc: "Notre formule la plus demandée.", price: "40€", duration: "55 min" },
-      { name: "Formule Prestige", desc: "Coupe + barbe + soin du visage complet.", price: "55€", duration: "75 min" },
-      { name: "Formule Marié", desc: "Coupe + barbe + soin + shampoing, pour le grand jour.", price: "65€", duration: "90 min" },
-    ],
-  },
-  {
-    Icon: DropIcon,
-    title: "Soins & Extras",
-    items: [
-      { name: "Soin du visage", desc: "Nettoyage, gommage et hydratation.", price: "20€", duration: "20 min" },
-      { name: "Gommage du cuir chevelu", desc: "Soin exfoliant pour un cuir chevelu sain.", price: "15€", duration: "15 min" },
-      { name: "Coloration barbe", desc: "Uniformise et couvre les poils blancs.", price: "20€", duration: "25 min" },
-      { name: "Épilation nez / oreilles", desc: "Finition rapide et discrète.", price: "8€", duration: "10 min" },
-    ],
-  },
-];
+const ICONS = {
+  "Coupes Homme": ScissorsIcon,
+  "Barbe & Rasage": RazorIcon,
+  "Formules Combo": ComboIcon,
+  "Soins & Extras": DropIcon,
+};
 
-export default function ServicesPage() {
+export default async function ServicesPage() {
+  const services = await listServices();
+  const categories = SERVICE_CATEGORIES.map((title) => ({
+    title,
+    Icon: ICONS[title] || ScissorsIcon,
+    items: services.filter((s) => s.category === title),
+  })).filter((c) => c.items.length > 0);
+
   return (
     <main id="main">
       <section className="page-hero">
@@ -60,14 +34,14 @@ export default function ServicesPage() {
 
       <section className="section">
         <div className="container">
-          {CATEGORIES.map(({ Icon, title, items }) => (
+          {categories.map(({ Icon, title, items }) => (
             <div className="service-cat reveal" key={title}>
               <h3><Icon width="22" height="22" stroke="#c9a24b" />{title}</h3>
               {items.map((item) => (
-                <div className="service-row" key={item.name}>
+                <div className="service-row" key={item.id}>
                   <div>
                     <div className="name">{item.name}</div>
-                    <div className="desc">{item.desc}</div>
+                    <div className="desc">{item.description}</div>
                   </div>
                   <div className="meta">
                     <div className="price">{item.price}</div>

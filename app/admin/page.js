@@ -1,4 +1,5 @@
 import { redirect } from "next/navigation";
+import Link from "next/link";
 import { isAdminAuthenticated } from "@/lib/session";
 import { listReservations, listMessages } from "@/lib/db";
 import { StatusButtons, MarkReadButton, LogoutButton } from "@/components/AdminActions";
@@ -29,7 +30,10 @@ export default async function AdminPage() {
           <div>
             <h1>Tableau de bord</h1>
           </div>
-          <LogoutButton />
+          <div style={{ display: "flex", gap: "0.8rem" }}>
+            <Link href="/admin/services" className="btn btn-outline">Gérer les services & tarifs</Link>
+            <LogoutButton />
+          </div>
         </div>
       </section>
 
