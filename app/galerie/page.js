@@ -12,7 +12,7 @@ const TILES = [
   { cat: "barbe", catLabel: "Barbe", label: "Rasage traditionnel", photo: "photo-1533245270348-821d4d5c7514" },
   { cat: "salon", catLabel: "Salon", label: "Ambiance & cadre", photo: "photo-1759134248487-e8baaf31e33e" },
   { cat: "barbe", catLabel: "Barbe", label: "Contour à la cire", photo: "photo-1596362601603-b74f6ef166e4" },
-  { cat: "coupes", catLabel: "Coupes", label: "Coupe enfant", photo: "photo-1542330824862-c1db95917e69" },
+  { cat: "coupes", catLabel: "Coupes", label: "Coupe enfant", photo: "photo-1704072650662-76df3af134a7" },
   { cat: "salon", catLabel: "Salon", label: "Poste de travail", photo: "photo-1675599193990-33d71150902b" },
   { cat: "barbe", catLabel: "Soins", label: "Soin du visage", photo: "photo-1764712784236-7019d1565cb7" },
 ];
