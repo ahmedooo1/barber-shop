@@ -3,7 +3,7 @@ import { InstagramIcon } from "@/components/Icons";
 
 export const metadata = {
   title: "Notre Équipe",
-  description: "Rencontrez l'équipe de barbiers du Barber Shop Paris : Karim, Yanis, Sofiane et Nadia.",
+  description: "Rencontrez l'équipe de barbiers du Barber Shop Elbeuf : Karim, Yanis, Sofiane et Nadia.",
 };
 
 const TEAM = [

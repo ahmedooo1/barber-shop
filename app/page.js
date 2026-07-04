@@ -183,7 +183,7 @@ export default function HomePage() {
             <p>Choisissez votre prestation, votre barbier et votre horaire préféré. Confirmation immédiate, sans acompte.</p>
             <div className="cta-actions">
               <Link href="/reservation" className="btn btn-primary">Réserver maintenant</Link>
-              <a href="tel:+33142961010" className="btn btn-outline">Appeler le salon</a>
+              <Link href="/contact" className="btn btn-outline">Appeler le salon</Link>
             </div>
           </div>
         </div>

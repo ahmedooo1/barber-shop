@@ -115,7 +115,7 @@ export default function ReservationForm() {
       </div>
 
       {status === "error" && Object.keys(errors).length === 0 && (
-        <div className="form-error show">L&apos;envoi a échoué. Merci de réessayer ou de nous appeler au 01 42 96 10 10.</div>
+        <div className="form-error show">L&apos;envoi a échoué. Merci de réessayer ou de nous appeler.</div>
       )}
 
       <h3 style={{ marginBottom: "1.6rem" }}>Informations de réservation</h3>

@@ -5,7 +5,7 @@ import { PhoneIcon, MailIcon, MapPinIcon } from "@/components/Icons";
 
 export const metadata = {
   title: "Réserver un créneau",
-  description: "Réservez votre rendez-vous en ligne au Barber Shop Paris : choisissez la prestation, le barbier, la date et l'heure. Gratuit et sans engagement.",
+  description: "Réservez votre rendez-vous en ligne au Barber Shop Elbeuf : choisissez la prestation, le barbier, la date et l'heure. Gratuit et sans engagement.",
 };
 
 const FAQ = [
@@ -46,15 +46,15 @@ export default function ReservationPage() {
                 <h4>Contact rapide</h4>
                 <div className="info-row">
                   <span className="ic"><PhoneIcon width="18" height="18" /></span>
-                  <div><p><a href="tel:+33142961010">01 42 96 10 10</a></p></div>
+                  <div><p>[Téléphone à compléter]</p></div>
                 </div>
                 <div className="info-row">
                   <span className="ic"><MailIcon width="18" height="18" /></span>
-                  <div><p><a href="mailto:contact@barbershop-paris.fr">contact@barbershop-paris.fr</a></p></div>
+                  <div><p><a href="mailto:contact@barbershop-elbeuf.fr">contact@barbershop-elbeuf.fr</a></p></div>
                 </div>
                 <div className="info-row">
                   <span className="ic"><MapPinIcon width="18" height="18" /></span>
-                  <div><p>12 Rue de la Paix, 75002 Paris</p></div>
+                  <div><p>[Adresse à compléter], Elbeuf</p></div>
                 </div>
               </div>
               <div className="info-block reveal">

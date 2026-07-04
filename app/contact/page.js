@@ -4,7 +4,7 @@ import { PhoneIcon, MailIcon, MapPinIcon, InstagramIcon, FacebookIcon } from "@/
 
 export const metadata = {
   title: "Contact",
-  description: "Contactez le Barber Shop Paris : adresse, téléphone, e-mail, horaires et formulaire de contact.",
+  description: "Contactez le Barber Shop Elbeuf : adresse, téléphone, e-mail, horaires et formulaire de contact.",
 };
 
 export default function ContactPage() {
@@ -25,15 +25,15 @@ export default function ContactPage() {
                 <h4>Nos coordonnées</h4>
                 <div className="info-row">
                   <span className="ic"><MapPinIcon width="18" height="18" /></span>
-                  <div><p>12 Rue de la Paix<br />75002 Paris, France</p></div>
+                  <div><p>[Adresse à compléter]<br />Elbeuf, France</p></div>
                 </div>
                 <div className="info-row">
                   <span className="ic"><PhoneIcon width="18" height="18" /></span>
-                  <div><p><a href="tel:+33142961010">01 42 96 10 10</a></p></div>
+                  <div><p>[Téléphone à compléter]</p></div>
                 </div>
                 <div className="info-row">
                   <span className="ic"><MailIcon width="18" height="18" /></span>
-                  <div><p><a href="mailto:contact@barbershop-paris.fr">contact@barbershop-paris.fr</a></p></div>
+                  <div><p><a href="mailto:contact@barbershop-elbeuf.fr">contact@barbershop-elbeuf.fr</a></p></div>
                 </div>
               </div>
 
@@ -60,7 +60,7 @@ export default function ContactPage() {
               <div className="map-box reveal">
                 <MapPinIcon width="34" height="34" stroke="#c9a24b" />
                 <div>
-                  <strong>12 Rue de la Paix, 75002 Paris</strong>
+                  <strong>[Adresse à compléter], Elbeuf</strong>
                   <p style={{ fontSize: "0.85rem", marginTop: "0.3rem" }}>Carte interactive à intégrer (Google Maps) une fois l&apos;adresse définitive confirmée.</p>
                 </div>
               </div>

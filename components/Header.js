@@ -50,7 +50,7 @@ export default function Header() {
             </Link>
           ))}
           <div className="nav-cta">
-            <a href="tel:+33142961010" className="btn btn-outline">01 42 96 10 10</a>
+            <Link href="/contact" className="btn btn-outline">Nous appeler</Link>
             <Link href="/reservation" className="btn btn-primary">Réserver</Link>
           </div>
         </nav>

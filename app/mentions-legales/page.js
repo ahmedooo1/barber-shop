@@ -29,10 +29,10 @@ export default function MentionsLegalesPage() {
             <p style={{ marginBottom: "2rem" }}>
               [À compléter : raison sociale / nom du salon]<br />
               [À compléter : forme juridique - entreprise individuelle, SARL, etc.]<br />
-              Siège social : 12 Rue de la Paix, 75002 Paris, France<br />
+              Siège social : [Adresse à compléter], Elbeuf, France<br />
               Numéro SIRET : [À compléter]<br />
-              Téléphone : <a href="tel:+33142961010">01 42 96 10 10</a><br />
-              E-mail : <a href="mailto:contact@barbershop-paris.fr">contact@barbershop-paris.fr</a><br />
+              Téléphone : [À compléter]<br />
+              E-mail : <a href="mailto:contact@barbershop-elbeuf.fr">contact@barbershop-elbeuf.fr</a><br />
               Directeur de la publication : [À compléter : nom du gérant]
             </p>
 

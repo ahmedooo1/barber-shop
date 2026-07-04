@@ -27,7 +27,7 @@ export default function PolitiqueConfidentialitePage() {
 
             <h2 style={{ color: "var(--cream)", marginBottom: "0.8rem" }}>Responsable du traitement</h2>
             <p style={{ marginBottom: "2rem" }}>
-              Barber Shop, 12 Rue de la Paix, 75002 Paris - <a href="mailto:contact@barbershop-paris.fr">contact@barbershop-paris.fr</a>.
+              Barber Shop, [Adresse à compléter], Elbeuf - <a href="mailto:contact@barbershop-elbeuf.fr">contact@barbershop-elbeuf.fr</a>.
             </p>
 
             <h2 style={{ color: "var(--cream)", marginBottom: "0.8rem" }}>Données collectées</h2>

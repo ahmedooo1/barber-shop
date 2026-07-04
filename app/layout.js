@@ -21,11 +21,11 @@ const poppins = Poppins({
 export const metadata = {
   metadataBase: new URL(process.env.SITE_URL || "http://localhost:3000"),
   title: {
-    default: "Barber Shop Paris - Coiffeur & Barbier Homme",
-    template: "%s | Barber Shop Paris",
+    default: "Barber Shop Elbeuf - Coiffeur & Barbier Homme",
+    template: "%s | Barber Shop Elbeuf",
   },
   description:
-    "Barber Shop, salon de coiffure et barbier pour homme au cœur de Paris. Coupes, dégradés, rasage traditionnel, soins de barbe. Réservez en ligne.",
+    "Barber Shop, salon de coiffure et barbier pour homme à Elbeuf. Coupes, dégradés, rasage traditionnel, soins de barbe. Réservez en ligne.",
   icons: {
     icon:
       "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23f2d88f'/%3E%3Cstop offset='1' stop-color='%23a9822f'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='100' height='100' rx='24' fill='%230b0b0d'/%3E%3Ccircle cx='50' cy='50' r='35' fill='url(%23g)'/%3E%3Ctext x='50' y='60' font-family='Arial,sans-serif' font-size='30' font-weight='700' text-anchor='middle' fill='%230b0b0d'%3EBS%3C/text%3E%3C/svg%3E",

@@ -44,9 +44,9 @@ export default function Footer() {
           <div>
             <h4>Contact</h4>
             <ul className="footer-links">
-              <li>12 Rue de la Paix, 75002 Paris</li>
-              <li><a href="tel:+33142961010">01 42 96 10 10</a></li>
-              <li><a href="mailto:contact@barbershop-paris.fr">contact@barbershop-paris.fr</a></li>
+              <li>[Adresse à compléter], Elbeuf</li>
+              <li>[Téléphone à compléter]</li>
+              <li><a href="mailto:contact@barbershop-elbeuf.fr">contact@barbershop-elbeuf.fr</a></li>
             </ul>
             <Link href="/reservation" className="btn btn-primary" style={{ marginTop: "1.2rem", color: "#000", textDecoration: "none" }}>
               Réserver un créneau
